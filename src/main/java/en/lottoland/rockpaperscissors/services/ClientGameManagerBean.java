@@ -27,7 +27,7 @@ public class ClientGameManagerBean implements Serializable {
     }
 
     public String getRounds() {
-        return tableGame.isEmpty() ? "No rounds played yet!": String.valueOf(tableGame.size());
+        return String.valueOf(tableGame.size());
     }
 
     public void reset() {
