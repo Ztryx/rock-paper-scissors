@@ -1,6 +1,5 @@
 package en.lottoland.rockpaperscissors.services;
 
-import en.lottoland.rockpaperscissors.entities.GameMatch;
 import en.lottoland.rockpaperscissors.entities.GameRankingTable;
 
 import javax.annotation.PostConstruct;
@@ -8,7 +7,6 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 /**
  * Created by andyx on 27/4/18.
@@ -25,6 +23,7 @@ public class ServerGameManagerBean implements Serializable {
     }
 
     public void addNewResult(String methodToExecute) throws Throwable {
+        //Reflection in order to call the right method
         Method method = ranking.getClass().getDeclaredMethod(methodToExecute);
         method.invoke(ranking);
         ranking.increaseRounds();

@@ -45,7 +45,7 @@ public final class GameRules {
 
     public static int[] getRandomMatch() {
         Random rnd = new Random();
-        int positionPlayer2 = 0;
+        int positionPlayer2;
         int[] duel = new int[2];
         rnd.setSeed(System.currentTimeMillis());
 
