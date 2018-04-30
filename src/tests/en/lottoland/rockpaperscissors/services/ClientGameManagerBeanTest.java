@@ -14,7 +14,10 @@ public class ClientGameManagerBeanTest extends TestCase {
     }
 
     public void testSetNewMatch() throws Exception, Throwable {
+        ServerGameManagerBean serverForTest = new ServerGameManagerBean();
+        serverForTest.initServerGameManagerBean();
         clientTestBean.initClientGameManagerBean();
+        clientTestBean.setBeanServer(serverForTest);
         int previousSize;
         for(int i=0; i<1000; i++) {
             previousSize = clientTestBean.getList().size();
@@ -30,7 +33,10 @@ public class ClientGameManagerBeanTest extends TestCase {
     }
 
     public void testReset() throws Exception, Throwable {
+        ServerGameManagerBean serverForTest = new ServerGameManagerBean();
+        serverForTest.initServerGameManagerBean();
         clientTestBean.initClientGameManagerBean();
+        clientTestBean.setBeanServer(serverForTest);
         for(int i=0; i<1000; i++)
             clientTestBean.setNewMatch();
         assertTrue(Integer.valueOf(clientTestBean.getRounds())>0);
