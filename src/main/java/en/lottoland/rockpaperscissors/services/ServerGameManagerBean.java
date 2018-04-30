@@ -1,16 +1,14 @@
 package en.lottoland.rockpaperscissors.services;
 
-/**
- * Created by andyx on 30/4/18.
- */
-
+import en.lottoland.rockpaperscissors.entities.GameMatch;
 import en.lottoland.rockpaperscissors.entities.GameRankingTable;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 /**
  * Created by andyx on 27/4/18.
@@ -36,12 +34,12 @@ public class ServerGameManagerBean implements Serializable {
         return String.valueOf(ranking.getRounds());
     }
 
-    public String getPlayerOneWins() {
-        return String.valueOf(ranking.getPlayerOneWins());
-    }
-
     public String getPlayerTwoWins() {
         return String.valueOf(ranking.getPlayerTwoWins());
+    }
+
+    public String getPlayerOneWins() {
+        return String.valueOf(ranking.getPlayerOneWins());
     }
 
     public String getDraws() {

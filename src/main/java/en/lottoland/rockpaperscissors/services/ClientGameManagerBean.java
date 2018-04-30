@@ -29,7 +29,9 @@ public class ClientGameManagerBean implements Serializable {
         beanServer.addNewResult("increase" + matchResult);
     }
 
-    public String getRounds() { return String.valueOf(tableGame.size()); }
+    public String getRounds() {
+        return tableGame != null ? String.valueOf(tableGame.size()) : "";
+    }
 
     public void reset() {
         tableGame.clear();
@@ -39,7 +41,11 @@ public class ClientGameManagerBean implements Serializable {
         return tableGame;
     }
 
-    public void setBeanServer(ServerGameManagerBean beanServer) { this.beanServer = beanServer; }
+    public void setBeanServer(ServerGameManagerBean beanServer) {
+        this.beanServer = beanServer;
+    }
 
-    public ServerGameManagerBean getBeanServer() { return beanServer; }
+    public ServerGameManagerBean getBeanServer() {
+        return beanServer;
+    }
 }
