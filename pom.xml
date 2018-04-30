@@ -35,6 +35,11 @@
       <artifactId>javax.servlet-api</artifactId>
       <version>3.0.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>25.0-jre</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>rock-paper-scissors</finalName>
