@@ -14,6 +14,8 @@ import javax.faces.bean.*;
 public class ClientGameManagerBean implements Serializable {
     private static final long serialVersionUID = 1L;
     private ArrayList<GameMatch> tableGame;
+    @ManagedProperty("#{serverGameInstance}")
+    private ServerGameManagerBean beanServer;
 
     @PostConstruct
     public void initClientGameManagerBean() {
@@ -24,11 +26,10 @@ public class ClientGameManagerBean implements Serializable {
         int[] randomMatch = GameRules.getRandomMatch();
         String matchResult = GameRules.getResult(String.valueOf(randomMatch[0]) + "-" + String.valueOf(randomMatch[1]));
         tableGame.add(new GameMatch(GameRules.getChoice(randomMatch[0]), GameRules.getChoice(randomMatch[1]), matchResult));
+        beanServer.addNewResult("increase" + matchResult);
     }
 
-    public String getRounds() {
-        return String.valueOf(tableGame.size());
-    }
+    public String getRounds() { return String.valueOf(tableGame.size()); }
 
     public void reset() {
         tableGame.clear();
@@ -37,4 +38,8 @@ public class ClientGameManagerBean implements Serializable {
     public ArrayList<GameMatch> getList() {
         return tableGame;
     }
+
+    public void setBeanServer(ServerGameManagerBean beanServer) { this.beanServer = beanServer; }
+
+    public ServerGameManagerBean getBeanServer() { return beanServer; }
 }
