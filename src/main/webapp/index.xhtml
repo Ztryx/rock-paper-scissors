@@ -3,9 +3,43 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <h:outputStylesheet library="css" name="/theme/bootstrap.css"/>
+    <h:outputStylesheet library="css" name="/theme/bootstrap.min.css"/>
+    <h:outputStylesheet library="css" name="/theme/_bootswatch.scss"/>
+    <h:outputStylesheet library="css" name="/theme/_variables.scss"/>
+    <h:outputStylesheet library="css" name="/private/own-theme.css"/>
+    <title>Rock, Paper, Scissors!</title>
+</h:head>
+<h:body>
+    <b:container>
+        <div style="text-align: center; margin: 50px auto;">
+            <p:graphicImage library="images" name="lottoland-logo.png" styleClass="logo"/>
+        </div>
+        <div style="text-align: center; margin: 0 15%;">
+            <p>
+                Welcome buddy! Do You want to play a game?
+            </p>
+            <p>
+                The rules are simple:
+            </p>
+            <p>
+                <b>Rock</b> beats Scissors<br/>
+                <b>Paper</b> beats Rock<br/>
+                <b>Scissors</b> beats Paper<br/>
+            </p>
+        </div>
+        <div style="text-align: center;">
+            <p:graphicImage library="images" name="diagram.png" style="width: 25%"/>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <p:button value="Go to Game" outcome="game"/>
+        </div>
+        <div style="text-align: center; margin: 30px auto;">
+            <p:button value="Go to Ranking" outcome="ranking"/>
+        </div>
+    </b:container>
+</h:body>
 </html>
