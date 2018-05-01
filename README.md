@@ -20,8 +20,10 @@ Building an effective solution that contains the implementation of the game <b>R
   </li>
   <li>
     The third and last one, We have the ranking! <br/>
-    We can appreciate here the general table saved on server side in memory-cache thanks to the managed bean with property <b>@ApplicationScoped</b> <br/>
-    <img src="https://i.imgur.com/7CfagVO.png" height="200" width="400"/>
+    We can appreciate here the general table saved on server side in memory-cache thanks to the managed bean with property <b>@ApplicationScoped.</b> <br/>
+    There is a live chart, in which We can realize about how should be the <b>distribution of random values</b> <em>(Related to random matchs).</em> <br/>
+    We also can appreciate asynchronous update in the form which is rendered.<br/>
+    <img src="https://i.imgur.com/UUUpp4x.png" height="350" width="400"/>
   </li>
 </ul>
 <h2>Dependencies</h2>
