@@ -60,4 +60,9 @@ public class ServerGameManagerBeanTest extends TestCase {
         assertEquals(String.valueOf(1000), serverTestBean.getRounds());
     }
 
+    public void testGetLivePieModel() throws Exception, Throwable {
+        serverTestBean.initServerGameManagerBean();
+        assertNotNull(serverTestBean.getLivePieModel());
+    }
+
 }
