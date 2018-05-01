@@ -21,24 +21,30 @@
             <p:graphicImage library="images" name="lottoland-logo.png" styleClass="logo"/>
         </div>
         <div style="text-align: center; margin: 0 15%;">
-            <p:panelGrid columns="2" layout="grid">
-                <f:facet name="header">
-                    <p:row>
-                        <p:column>Summary</p:column>
-                    </p:row>
-                </f:facet>
-                <h:outputFormat value="Total rounds played:"/>
-                <h:outputText value = "#{serverGameInstance.rounds}"/>
+            <h:form id="summary">
+                <p:poll interval="3" update="summary" />
+                <p:panelGrid columns="2" layout="grid">
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column>Summary</p:column>
+                        </p:row>
+                    </f:facet>
+                    <h:outputFormat value="Total rounds played:"/>
+                    <h:outputText value = "#{serverGameInstance.rounds}"/>
 
-                <h:outputFormat value="Total wins for first players:"/>
-                <h:outputText value = "#{serverGameInstance.playerOneWins}"/>
+                    <h:outputFormat value="Total wins for first players:"/>
+                    <h:outputText value = "#{serverGameInstance.playerOneWins}"/>
 
-                <h:outputFormat value="Total wins for second players:"/>
-                <h:outputText value = "#{serverGameInstance.playerTwoWins}"/>
+                    <h:outputFormat value="Total wins for second players:"/>
+                    <h:outputText value = "#{serverGameInstance.playerTwoWins}"/>
 
-                <h:outputFormat value="Total draws:"/>
-                <h:outputText value = "#{serverGameInstance.draws}"/>
-            </p:panelGrid>
+                    <h:outputFormat value="Total draws:"/>
+                    <h:outputText value = "#{serverGameInstance.draws}"/>
+                </p:panelGrid>
+                <div class="text-align: center;">
+                    <p:chart id="rounds" type="pie" model="#{serverGameInstance.livePieModel}" style="width:400px;height:300px;text-align: center; margin:30px auto"/>
+                </div>
+            </h:form>
         </div>
         <div style="text-align: center; margin: 30px auto;">
             <p:button value="Go to Game" outcome="game"/>

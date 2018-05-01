@@ -1,6 +1,7 @@
 package en.lottoland.rockpaperscissors.services;
 
 import en.lottoland.rockpaperscissors.entities.GameRankingTable;
+import org.primefaces.model.chart.PieChartModel;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
@@ -16,10 +17,12 @@ import java.lang.reflect.Method;
 public class ServerGameManagerBean implements Serializable {
     private static final long serialVersionUID = 2L;
     private GameRankingTable ranking;
+    private PieChartModel livePieModel;
 
     @PostConstruct
     public void initServerGameManagerBean() {
         ranking = new GameRankingTable();
+        livePieModel = new PieChartModel();
     }
 
     public void addNewResult(String methodToExecute) throws Throwable {
@@ -47,5 +50,20 @@ public class ServerGameManagerBean implements Serializable {
 
     public GameRankingTable getRanking() {
         return ranking;
+    }
+
+    public PieChartModel getLivePieModel() {
+        int playerOneWins = Integer.valueOf(this.getPlayerOneWins());
+        int playerTwoWins = Integer.valueOf(this.getPlayerTwoWins());
+        int draws = Integer.valueOf(this.getDraws());
+
+        livePieModel.getData().put("Player One Wins", playerOneWins);
+        livePieModel.getData().put("Player Two Wins", playerTwoWins);
+        livePieModel.getData().put("Draws", draws);
+
+        livePieModel.setTitle("Rounds");
+        livePieModel.setLegendPosition("ne");
+
+        return livePieModel;
     }
 }
