@@ -1,5 +1,6 @@
 package en.lottoland.rockpaperscissors.services;
 
+import com.google.common.base.Objects;
 import en.lottoland.rockpaperscissors.entities.GameMatch;
 import en.lottoland.rockpaperscissors.services.utils.GameRules;
 
@@ -25,7 +26,10 @@ public class ClientGameManagerBean implements Serializable {
     public void setNewMatch() throws Throwable {
         int[] randomMatch = GameRules.getRandomMatch();
         String matchResult = GameRules.getResult(String.valueOf(randomMatch[0]) + "-" + String.valueOf(randomMatch[1]));
-        tableGame.add(new GameMatch(GameRules.getChoice(randomMatch[0]), GameRules.getChoice(randomMatch[1]), matchResult));
+        tableGame.add(new GameMatch(
+                                    GameRules.getChoice(randomMatch[0]),
+                                    GameRules.getChoice(randomMatch[1]),
+                                    Objects.equal(matchResult, "Draw") ? matchResult:matchResult + " wins"));
         beanServer.addNewResult("increase" + matchResult);
     }
 
